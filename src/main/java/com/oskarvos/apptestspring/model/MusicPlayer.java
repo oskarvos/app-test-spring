@@ -1,38 +1,33 @@
 package com.oskarvos.apptestspring.model;
 
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 public class MusicPlayer {
 
-    @Getter
-    @Value("${musicPlayer.name}")
-    private String name;
+    private final String START_MUSIC_ARTIST =
+            "\n===MusicPlayer.class=== Музыкальный плеер играет следующего(их) артиста(ов) :";
 
-    @Getter
-    @Value("${musicPlayer.volume}")
-    private int volume;
+    public String playRandomListArtists() {
+        List<MusicEnum> valuesMusicEnums = List.of(MusicEnum.values());
+        MusicEnum musicEnum = new RandomUtil().getElementRandom(valuesMusicEnums);
 
-    private final Music music1;
-    private final Music music2;
-
-    @Autowired
-    public MusicPlayer(@Qualifier("classicalMusic") Music music1,
-                       @Qualifier("rockMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+        return START_MUSIC_ARTIST + (musicEnum.equals(MusicEnum.CLASSICAL) ?
+                new ClassicalMusic().getListArtists() :
+                new RockMusic().getListArtists());
     }
 
-    public String playMusic(MusicEnum musicEnum) {
-        String str = "\n===MusicPlayer.class=== start musicPlayer list songs: ";
+    public String playRandomMusician() {
+        List<String> result = Stream.concat(
+                        new ClassicalMusic().getListArtists().stream(),
+                        new RockMusic().getListArtists().stream())
+                .toList();
 
-        return musicEnum.equals(MusicEnum.CLASSICAL) ?
-                str + music1.getListSongs() :
-                str + music2.getListSongs();
+        return START_MUSIC_ARTIST + new RandomUtil().getElementRandom(result);
     }
 
 }

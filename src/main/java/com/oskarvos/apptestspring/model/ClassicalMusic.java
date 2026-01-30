@@ -7,19 +7,16 @@ import java.util.List;
 @Component
 public class ClassicalMusic implements Music {
 
-    private final String SONG1 = "Моцарт";
-    private final String SONG2 = "Бетховен>";
-    private final String SONG3 = "Бах";
+    private final String ARTIST1 = "Моцарт";
+    private final String ARTIST2 = "Бетховен>";
+    private final String ARTIST3 = "Бах";
 
-    List<String> listSong = List.of(SONG1, SONG2, SONG3);
-
-    @Override
-    public String getSong() {
-        return "\n===ClassicalMusic.class=== playing song: " + SONG1;
-    }
+    List<String> listSong = List.of(
+            ARTIST1, ARTIST2, ARTIST3);
 
     @Override
-    public List<String> getListSongs() {
+    public List<String> getListArtists() {
         return listSong;
     }
+
 }
