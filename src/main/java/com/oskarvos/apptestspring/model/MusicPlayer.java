@@ -22,11 +22,13 @@ public class MusicPlayer {
     }
 
     public String playRandomMusician() {
+        System.out.println("Начало метода playRandomMusician()");
         List<String> result = Stream.concat(
                         new ClassicalMusic().getListArtists().stream(),
                         new RockMusic().getListArtists().stream())
                 .toList();
 
+        System.out.println("Перед return метода playRandomMusician()");
         return START_MUSIC_ARTIST + new RandomUtil().getElementRandom(result);
     }
 

@@ -9,10 +9,16 @@ public class Computer {
     @Autowired
     private MusicPlayer musicPlayer;
 
-    public String start() {
-        return String.format("%n===Computer.class=== Компьютер запустил музыкальный плеер!!! %s%s",
-                musicPlayer.playRandomListArtists(),
-                musicPlayer.playRandomMusician());
+    public void start() {
+        System.out.println("\n===Computer.class=== Запускаем плеер...");
+
+        System.out.println("\n1. Вызываем playRandomListArtists():");
+        String result1 = musicPlayer.playRandomListArtists();
+        System.out.println("Результат 1 получен: " + result1);
+
+        System.out.println("\n2. Вызываем playRandomMusician():");
+        String result2 = musicPlayer.playRandomMusician();
+        System.out.println("Результат 2 получен: " + result2);
     }
 
 }

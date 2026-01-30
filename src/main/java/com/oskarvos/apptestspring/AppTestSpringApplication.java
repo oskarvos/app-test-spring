@@ -12,7 +12,7 @@ public class AppTestSpringApplication {
         ApplicationContext context = SpringApplication.run(AppTestSpringApplication.class, args);
 
         Computer computer = context.getBean(Computer.class);
-        System.out.println(computer.start());
+        computer.start();
     }
 
 }
