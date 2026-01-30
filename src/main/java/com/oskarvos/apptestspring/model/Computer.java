@@ -11,6 +11,6 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "\n===Computer.class=== Start music player " + musicPlayer.toString();
+        return "\n===Computer.class=== Start music player " + musicPlayer.playMusic();
     }
 }
