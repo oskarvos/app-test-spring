@@ -18,7 +18,9 @@ public class MusicPlayer {
     }
 
     public String playMusic() {
-        return "\n===MusicPlayer.class=== start musicPlayer: " + music1.getSong() + ", " + music2.getSong();
+        return "\n===MusicPlayer.class=== start musicPlayer list songs: " +
+                music1.getListSongs() + ", " +
+                music2.getListSongs();
     }
 
 }
