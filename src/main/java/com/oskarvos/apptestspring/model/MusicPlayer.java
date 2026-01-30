@@ -17,10 +17,12 @@ public class MusicPlayer {
         this.music2 = music2;
     }
 
-    public String playMusic() {
-        return "\n===MusicPlayer.class=== start musicPlayer list songs: " +
-                music1.getListSongs() + ", " +
-                music2.getListSongs();
+    public String playMusic(MusicEnum musicEnum) {
+        String str = "\n===MusicPlayer.class=== start musicPlayer list songs: ";
+
+        return musicEnum.equals(MusicEnum.CLASSICAL) ?
+                str + music1.getListSongs() :
+                str + music2.getListSongs();
     }
 
 }
